@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f3e9">
+<title>SamAr Digital | Client Portal</title>
+<style>
+:root{--blue:#315fe8;--purple:#34234f;--green:#245b45;--orange:#c76532;--cream:#f7f3e9;--white:#fffefa;--burgundy:#722f42;--ink:#24212a;--muted:#777580;--line:#e9e4da;--shadow:0 12px 32px rgba(42,35,54,.06);--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+button:disabled{opacity:.55;cursor:not-allowed}.primary{border:0;background:var(--blue);color:white;border-radius:11px;padding:12px 16px;font-size:13px;font-weight:750}.secondary{border:1px solid var(--line);background:var(--white);color:var(--ink);border-radius:11px;padding:11px 14px;font-size:12px;font-weight:700}.muted{color:var(--muted)}.small{font-size:12px;line-height:1.6}
+.auth-wrap{min-height:100vh;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);padding:24px;gap:24px;max-width:1250px;margin:auto;align-items:stretch}.auth-brand{background:var(--purple);color:#fff;border-radius:26px;padding:clamp(28px,5vw,60px);display:flex;flex-direction:column;justify-content:space-between;min-height:600px}.brand{display:flex;align-items:center;gap:12px}.brand-mark{width:42px;height:42px;border-radius:13px;background:var(--cream);color:var(--purple);display:grid;place-items:center;font-weight:900;font-size:18px}.brand-name{font-weight:800;line-height:1.15}.brand-name small{display:block;color:#c9c0d5;font-size:10px;font-weight:600;letter-spacing:1.2px;margin-top:5px}.auth-hero h1{font-size:clamp(32px,4.4vw,54px);letter-spacing:-2px;line-height:1.05;margin:0 0 18px;max-width:520px}.auth-hero p{color:#d6cfdf;line-height:1.8;max-width:460px;font-size:14px}.feature-list{display:grid;gap:13px;margin-top:30px}.feature{display:flex;gap:12px;align-items:center;color:#f2eef6;font-size:13px}.feature i{font-style:normal;background:rgba(255,255,255,.12);width:30px;height:30px;border-radius:9px;display:grid;place-items:center}.auth-foot{color:#c9c0d5;font-size:11px}.auth-card-wrap{display:grid;place-items:center;padding:20px}.auth-card{width:100%;max-width:430px;background:var(--white);border:1px solid var(--line);border-radius:23px;padding:clamp(22px,4vw,36px);box-shadow:var(--shadow)}.eyebrow{text-transform:uppercase;letter-spacing:1.7px;color:var(--blue);font-weight:800;font-size:10px;margin-bottom:10px}.auth-card h2{font-size:27px;letter-spacing:-.8px;margin:0 0 8px}.auth-card p{font-size:12px;line-height:1.7;color:var(--muted);margin:0 0 22px}.tabs{display:grid;grid-template-columns:1fr 1fr;padding:4px;background:#f1eee8;border-radius:12px;margin-bottom:22px}.tabs button{border:0;background:transparent;border-radius:9px;padding:10px;font-size:12px;font-weight:750;color:var(--muted)}.tabs button.active{background:var(--white);color:var(--purple);box-shadow:0 2px 8px #34234f12}.field{display:grid;gap:7px;margin-bottom:15px}.field label{font-size:11px;font-weight:750}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:#fffefa;border-radius:10px;padding:12px 13px;outline:none;font-size:13px;color:var(--ink)}.field input:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #315fe815}.full{width:100%}.auth-note{font-size:11px!important;margin:14px 0 0!important}
+.app{display:grid;grid-template-columns:245px minmax(0,1fr);min-height:100vh}.sidebar{background:var(--purple);color:white;padding:26px 18px;display:flex;flex-direction:column;gap:28px}.sidebar .brand{padding:0 8px}.workspace-label{color:#b9afc8;text-transform:uppercase;font-size:10px;letter-spacing:1.6px;padding:0 12px;margin-bottom:-14px}.nav{display:grid;gap:6px}.nav button{border:0;color:#d8d1e1;background:transparent;text-align:left;padding:12px 13px;border-radius:11px;display:flex;align-items:center;gap:12px;font-size:13px;font-weight:650}.nav button.active,.nav button:hover{background:#ffffff1f;color:white}.nav .ico{width:19px;text-align:center;font-size:16px}.sidebar-bottom{margin-top:auto}.help-card{border:1px solid #ffffff29;border-radius:15px;padding:15px;background:#ffffff0f}.help-card strong{font-size:13px}.help-card p{font-size:11px;line-height:1.6;color:#d0c8da;margin:7px 0 13px}.help-card button{background:var(--cream);color:var(--purple);border:0;border-radius:9px;padding:10px 12px;font-size:12px;font-weight:750;width:100%}
+main{min-width:0;padding:28px clamp(18px,3vw,42px) 40px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:34px}.topbar-left{display:flex;align-items:center;gap:10px}.crumb{font-size:12px;color:var(--muted)}.crumb b{color:var(--ink)}.top-actions{display:flex;align-items:center;gap:12px}.status-pill{font-size:11px;font-weight:700;color:var(--green);background:#e5efe8;border-radius:99px;padding:8px 11px}.avatar{width:37px;height:37px;border-radius:50%;background:#ead8c8;color:var(--burgundy);display:grid;place-items:center;font-weight:800;font-size:12px}.mobile-menu{display:none;border:1px solid var(--line);background:var(--white);border-radius:10px;padding:9px 11px}.header-row{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:26px}.header-row h1{font-size:clamp(27px,3vw,38px);letter-spacing:-1.5px;line-height:1.12;margin:0 0 10px}.subtitle{font-size:13px;color:var(--muted);line-height:1.7;margin:0;max-width:650px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:22px}.metric,.panel,.project-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.metric{padding:18px}.metric-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.metric-label{font-size:11px;color:var(--muted);font-weight:650}.metric-icon{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-size:15px;background:#edf0ff;color:var(--blue)}.metric:nth-child(2) .metric-icon{background:#e7f1e9;color:var(--green)}.metric:nth-child(3) .metric-icon{background:#f8eadd;color:var(--orange)}.metric:nth-child(4) .metric-icon{background:#f3e8ed;color:var(--burgundy)}.metric-value{font-size:26px;font-weight:800;letter-spacing:-1px;margin-bottom:5px}.metric-note{font-size:10px;color:var(--muted)}.content-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(270px,1fr);gap:18px}.panel{padding:21px;margin-bottom:18px;box-shadow:var(--shadow)}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.panel h2{font-size:15px;letter-spacing:-.35px;margin:0}.panel-sub{font-size:11px;color:var(--muted);margin-top:5px}.text-button{border:0;background:transparent;color:var(--blue);font-size:11px;font-weight:750;padding:6px}.project-card{padding:18px;margin-bottom:12px;box-shadow:none}.project-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.project-name{font-weight:800;font-size:14px;margin-bottom:6px}.project-type{font-size:11px;color:var(--muted)}.badge{white-space:nowrap;font-size:10px;font-weight:750;padding:7px 9px;border-radius:99px;background:#e7f1e9;color:var(--green)}.badge.pending{background:#f9ecdf;color:#a75525}.progress-line{height:7px;background:#eeeaf0;border-radius:99px;overflow:hidden;margin:18px 0 10px}.progress-line span{display:block;height:100%;width:0;background:var(--blue);border-radius:99px;transition:width .25s}.project-foot{display:flex;justify-content:space-between;gap:12px;font-size:10px;color:var(--muted)}.project-foot b{color:var(--ink)}.empty-note{font-size:12px;color:var(--muted);line-height:1.7;margin:12px 0 0}.timeline{display:grid;gap:0}.timeline-item{display:grid;grid-template-columns:24px 1fr;gap:11px;position:relative;padding-bottom:20px}.timeline-item:not(:last-child):before{content:"";position:absolute;left:9px;top:19px;bottom:0;width:1px;background:var(--line)}.dot{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;background:#e7f1e9;color:var(--green);font-size:10px;z-index:1}.dot.next{background:#edf0ff;color:var(--blue)}.timeline-title{font-size:12px;font-weight:750;margin-bottom:5px}.timeline-meta{font-size:10px;color:var(--muted);line-height:1.5}.doc-list{display:grid;gap:10px}.doc{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:12px;padding:11px}.doc-icon{width:35px;height:39px;border-radius:8px;background:#f3e8ed;color:var(--burgundy);display:grid;place-items:center;font-size:10px;font-weight:900}.doc-info{min-width:0;flex:1}.doc-title{font-size:11px;font-weight:750;margin-bottom:4px}.doc-meta{font-size:10px;color:var(--muted);overflow-wrap:anywhere}.doc a{color:var(--blue);font-size:11px;font-weight:750;text-decoration:none}.update-box{background:#f2efe8;border-radius:13px;padding:15px}.update-box .date{font-size:10px;color:var(--muted);margin-bottom:7px}.update-box strong{font-size:12px}.update-box p{font-size:11px;color:#66616d;line-height:1.6;margin:7px 0 0}.request-form{display:grid;gap:10px}.request-form textarea{min-height:95px;resize:vertical}.request-form input,.request-form textarea,.request-form select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px;font-size:12px;background:#fffefa}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.status-line{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:12px;margin-bottom:9px;font-size:12px}.status-line strong{font-size:12px}.empty-state{border:1px dashed #d8d0df;border-radius:14px;padding:22px;text-align:center}.empty-state h3{font-size:14px;margin:0 0 7px}.empty-state p{font-size:12px;color:var(--muted);line-height:1.7;margin:0}.toast{position:fixed;bottom:22px;right:22px;background:var(--purple);color:white;padding:13px 17px;border-radius:12px;font-size:12px;box-shadow:var(--shadow);display:none;max-width:calc(100% - 44px);z-index:50}footer{font-size:10px;color:#96919a;text-align:center;padding:14px 0}
+@media(max-width:1050px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.content-grid{grid-template-columns:1fr}.app{grid-template-columns:220px minmax(0,1fr)}}
+@media(max-width:720px){.auth-wrap{grid-template-columns:1fr;padding:12px}.auth-brand{min-height:300px;padding:25px}.auth-hero h1{font-size:34px}.auth-hero p{font-size:12px}.feature-list{grid-template-columns:1fr 1fr}.auth-foot{margin-top:25px}.auth-card-wrap{padding:8px}.app{grid-template-columns:1fr}.sidebar{display:none;position:fixed;inset:0 auto 0 0;width:260px;z-index:20;box-shadow:0 0 0 100vmax #19142259}.sidebar.open{display:flex}main{padding:19px 15px 28px}.topbar{margin-bottom:26px}.mobile-menu{display:block}.header-row{align-items:flex-start;flex-direction:column}.header-row .primary{width:100%}.grid{gap:10px}.metric{padding:14px}.metric-value{font-size:23px}.panel{padding:16px}.project-card{padding:15px}.status-pill{display:none}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<section id="authScreen" class="auth-wrap">
+  <div class="auth-brand">
+    <div class="brand"><div class="brand-mark">S</div><div class="brand-name">SamAr Digital<small>CLIENT WORKSPACE</small></div></div>
+    <div class="auth-hero"><div class="eyebrow" style="color:#c7d3ff">Your work, clearly organized</div><h1>Your project.<br>Your progress.<br>One simple place.</h1><p>Sign in to see your project status, upcoming milestones, shared files, invoices, and updates from SamAr Digital.</p>
+      <div class="feature-list"><div class="feature"><i>✓</i> Project progress & milestones</div><div class="feature"><i>▤</i> Documents in one place</div><div class="feature"><i>₹</i> Invoice status</div><div class="feature"><i>↗</i> Feedback & update requests</div></div>
+    </div><div class="auth-foot">© 2026 SamAr Digital · Client workspace</div>
+  </div>
+  <div class="auth-card-wrap"><div class="auth-card">
+    <div class="eyebrow">Client access</div><h2 id="authTitle">Welcome back</h2><p id="authDesc">Sign in with the same email address you used in the SamAr Client Onboarding Form.</p>
+    <div class="tabs"><button id="loginTab" class="active" type="button">Log in</button><button id="signupTab" type="button">Create account</button></div>
+    <form id="authForm">
+      <div class="field"><label for="authEmail">Email address</label><input id="authEmail" type="email" placeholder="you@example.com" autocomplete="email" required></div>
+      <div class="field"><label for="authPassword">Password</label><input id="authPassword" type="password" placeholder="At least 6 characters" autocomplete="current-password" minlength="6" required></div>
+      <div id="nameField" class="field hidden"><label for="authName">Your name</label><input id="authName" type="text" placeholder="Full name" autocomplete="name"></div>
+      <button class="primary full" id="authSubmit" type="submit">Log in to portal</button>
+    </form>
+    <p class="auth-note" id="authFootnote">New here? Create an account using your onboarding email.</p>
+    <p class="auth-note muted">Access is configured securely by SamAr Digital. If your account is not yet enabled, contact us using your onboarding email.</p>
+  </div></div>
+</section>
+<div id="portalApp" class="app hidden">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><div class="brand-mark">S</div><div class="brand-name">SamAr Digital<small>CLIENT WORKSPACE</small></div></div>
+    <div class="workspace-label">Workspace</div>
+    <nav class="nav" aria-label="Main navigation">
+      <button class="active" data-view="Overview"><span class="ico">◫</span>Overview</button>
+      <button data-view="My Projects"><span class="ico">▦</span>My Projects</button>
+      <button data-view="Timeline"><span class="ico">◷</span>Timeline</button>
+      <button data-view="Documents"><span class="ico">▤</span>Documents</button>
+      <button data-view="Invoices & Payments"><span class="ico">₹</span>Invoices & Payments</button>
+      <button data-view="Feedback & Revisions"><span class="ico">↗</span>Feedback & Revisions</button>
+      <button id="adminNav" class="hidden" data-view="Admin"><span class="ico">⚙</span>Admin workspace</button>
+    </nav>
+    <div class="sidebar-bottom"><div class="help-card"><strong>Need a hand?</strong><p>Ask a question or request an update about your project.</p><button id="sidebarRequest">Send a request ↗</button></div></div>
+  </aside>
+  <main>
+    <div class="topbar"><div class="topbar-left"><button class="mobile-menu" id="menuBtn" aria-label="Open menu">☰</button><div class="crumb">Client Portal&nbsp; / &nbsp;<b id="crumbCurrent">Overview</b></div></div><div class="top-actions"><span class="status-pill" id="connectionStatus">● Connected</span><div class="avatar" id="avatar">CL</div><button class="secondary" id="logoutBtn">Log out</button></div></div>
+    <div class="header-row"><div><div class="eyebrow">Your project workspace</div><h1 id="greeting">Welcome back.</h1><p class="subtitle" id="introText">Your SamAr Digital work, milestones and files in one simple place.</p></div><button class="primary" id="updateBtn">Request a project update ↗</button></div>
+    <div id="viewOverview">
+      <section class="grid" aria-label="Project summary">
+        <div class="metric"><div class="metric-top"><span class="metric-label">Active projects</span><span class="metric-icon">▦</span></div><div class="metric-value" id="metricProjects">—</div><div class="metric-note">Currently in progress</div></div>
+        <div class="metric"><div class="metric-top"><span class="metric-label">Project progress</span><span class="metric-icon">↗</span></div><div class="metric-value" id="metricProgress">—</div><div class="metric-note">Average project completion</div></div>
+        <div class="metric"><div class="metric-top"><span class="metric-label">Pending approvals</span><span class="metric-icon">◷</span></div><div class="metric-value" id="metricApprovals">—</div><div class="metric-note">Waiting for your review</div></div>
+        <div class="metric"><div class="metric-top"><span class="metric-label">Outstanding balance</span><span class="metric-icon">₹</span></div><div class="metric-value" id="metricBalance">—</div><div class="metric-note">Across your invoices</div></div>
+      </section>
+      <div class="content-grid"><div><section class="panel"><div class="panel-head"><div><h2>Project overview</h2><div class="panel-sub">A quick snapshot of your current work</div></div><button class="text-button" data-jump="My Projects">All projects →</button></div><div id="projectPreview"></div></section>
+      <section class="panel"><div class="panel-head"><div><h2>Project timeline</h2><div class="panel-sub">Milestones and next steps</div></div><button class="text-button" data-jump="Timeline">Full timeline →</button></div><div id="timelinePreview" class="timeline"></div></section></div>
+      <div><section class="panel"><div class="panel-head"><div><h2>Recent documents</h2><div class="panel-sub">Files shared with you</div></div><button class="text-button" data-jump="Documents">View all →</button></div><div id="documentPreview" class="doc-list"></div></section>
+      <section class="panel"><div class="panel-head"><div><h2>Latest update</h2><div class="panel-sub">From SamAr Digital</div></div></div><div id="latestUpdate"></div></section>
+      <section class="panel"><div class="panel-head"><div><h2>Onboarding status</h2></div></div><div id="onboardingStatus"></div></section></div></div>
+    </div>
+    <div id="viewOther" class="hidden"></div>
+    <footer>© 2026 SamAr Digital · Your client workspace</footer>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script type="text/plain" id="embeddedSchemaSql">
+-- SamAr Digital Client Portal — run once in Supabase SQL Editor.
+-- After a client submits the Google Form, add/sync their email to onboarding_leads.
+-- Add projects/milestones/documents/invoices/updates using the same client_email.
+create extension if not exists pgcrypto;
+
+create table if not exists public.onboarding_leads (
+  id uuid primary key default gen_random_uuid(),
+  client_email text not null,
+  client_name text,
+  service_requested text,
+  submitted_at timestamptz default now(),
+  lead_status text not null default 'Received',
+  admin_note text,
+  created_at timestamptz not null default now(),
+  constraint onboarding_leads_client_email_unique unique (client_email)
+);
+create table if not exists public.projects (
+  id uuid primary key default gen_random_uuid(),
+  client_email text not null,
+  project_name text not null,
+  service_type text,
+  status text not null default 'In progress',
+  progress integer not null default 0 check (progress between 0 and 100),
+  start_date date,
+  target_date date,
+  description text,
+  created_at timestamptz not null default now()
+);
+create table if not exists public.milestones (
+  id uuid primary key default gen_random_uuid(),
+  project_id uuid not null references public.projects(id) on delete cascade,
+  client_email text not null,
+  title text not null,
+  status text not null default 'Upcoming',
+  due_date date,
+  notes text,
+  sort_order integer not null default 0,
+  created_at timestamptz not null default now()
+);
+create table if not exists public.documents (
+  id uuid primary key default gen_random_uuid(),
+  client_email text not null,
+  project_id uuid references public.projects(id) on delete cascade,
+  title text not null,
+  file_url text not null,
+  file_type text default 'File',
+  created_at timestamptz not null default now()
+);
+create table if not exists public.invoices (
+  id uuid primary key default gen_random_uuid(),
+  client_email text not null,
+  project_id uuid references public.projects(id) on delete set null,
+  invoice_number text,
+  description text,
+  amount numeric(12,2) not null default 0,
+  status text not null default 'Pending',
+  due_date date,
+  invoice_url text,
+  created_at timestamptz not null default now()
+);
+create table if not exists public.project_updates (
+  id uuid primary key default gen_random_uuid(),
+  client_email text not null,
+  project_id uuid references public.projects(id) on delete cascade,
+  title text not null,
+  message text,
+  created_at timestamptz not null default now()
+);
+create table if not exists public.client_requests (
+  id uuid primary key default gen_random_uuid(),
+  client_email text not null,
+  client_name text,
+  request_type text not null default 'Project update',
+  message text not null,
+  status text not null default 'Received',
+  created_at timestamptz not null default now()
+);
+alter table public.onboarding_leads enable row level security;
+alter table public.projects enable row level security;
+alter table public.milestones enable row level security;
+alter table public.documents enable row level security;
+alter table public.invoices enable row level security;
+alter table public.project_updates enable row level security;
+alter table public.client_requests enable row level security;
+
+drop policy if exists "Clients read own onboarding" on public.onboarding_leads;
+create policy "Clients read own onboarding" on public.onboarding_leads for select to authenticated
+using (lower(client_email) = lower((select auth.jwt()->>'email')));
+drop policy if exists "Clients read own projects" on public.projects;
+create policy "Clients read own projects" on public.projects for select to authenticated
+using (lower(client_email) = lower((select auth.jwt()->>'email')));
+drop policy if exists "Clients read own milestones" on public.milestones;
+create policy "Clients read own milestones" on public.milestones for select to authenticated
+using (lower(client_email) = lower((select auth.jwt()->>'email')));
+drop policy if exists "Clients read own documents" on public.documents;
+create policy "Clients read own documents" on public.documents for select to authenticated
+using (lower(client_email) = lower((select auth.jwt()->>'email')));
+drop policy if exists "Clients read own invoices" on public.invoices;
+create policy "Clients read own invoices" on public.invoices for select to authenticated
+using (lower(client_email) = lower((select auth.jwt()->>'email')));
+drop policy if exists "Clients read own updates" on public.project_updates;
+create policy "Clients read own updates" on public.project_updates for select to authenticated
+using (lower(client_email) = lower((select auth.jwt()->>'email')));
+drop policy if exists "Clients submit own requests" on public.client_requests;
+create policy "Clients submit own requests" on public.client_requests for insert to authenticated
+with check (lower(client_email) = lower((select auth.jwt()->>'email')));
+drop policy if exists "Clients read own requests" on public.client_requests;
+create policy "Clients read own requests" on public.client_requests for select to authenticated
+using (lower(client_email) = lower((select auth.jwt()->>'email')));
+
+-- Admin permissions use server-controlled app_metadata claims (never user_metadata).
+-- Set the owner role only from Supabase SQL Editor / trusted server.
+do $$ declare t text; begin
+  foreach t in array array['onboarding_leads','projects','milestones','documents','invoices','project_updates','client_requests'] loop
+    execute format('drop policy if exists "SamAr admins manage all" on public.%I', t);
+    execute format('create policy "SamAr admins manage all" on public.%I for all to authenticated using ((auth.jwt()->''app_metadata''->>''role'') = ''admin'') with check ((auth.jwt()->''app_metadata''->>''role'') = ''admin'')', t);
+  end loop;
+end $$;
+
+create unique index if not exists onboarding_leads_client_email_unique_idx on public.onboarding_leads(client_email);
+create index if not exists projects_client_email_idx on public.projects(lower(client_email));
+create index if not exists onboarding_leads_client_email_idx on public.onboarding_leads(lower(client_email));
+create index if not exists milestones_project_idx on public.milestones(project_id);
+create index if not exists docs_client_email_idx on public.documents(lower(client_email));
+create index if not exists invoices_client_email_idx on public.invoices(lower(client_email));
+create index if not exists updates_client_email_idx on public.project_updates(lower(client_email));
+create index if not exists requests_client_email_idx on public.client_requests(lower(client_email));
+
+-- Data is managed from Supabase Dashboard (or a trusted admin backend).
+-- Never put a service_role key in this HTML.
+</script>
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const $ = id => document.getElementById(id);
+// Owner/developer configures these once before publishing. Clients never see setup credentials.
+const SUPABASE_URL = 'https://kdlfamrkluwevujccwaq.supabase.co';
+const SUPABASE_PUBLIC_KEY = 'sb_publishable_jwzoHDzLqPbuXGJHRQUH2w_oFpmpoSK';
+let supabase = null, currentUser = null, authMode = 'login', isAdmin = false, data = {leads:[],projects:[],milestones:[],documents:[],invoices:[],updates:[],requests:[]};
+const config = {url:SUPABASE_URL,key:SUPABASE_PUBLIC_KEY};
+function toast(msg){const el=$('toast');el.textContent=msg;el.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display='none',3800)}
+function money(n){return '₹'+Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:2})}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function date(s){if(!s)return 'Not set';const d=new Date(s+'T00:00:00');return isNaN(d)?esc(s):d.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}
+function setAuthMode(mode){authMode=mode;const signup=mode==='signup';$('loginTab').classList.toggle('active',!signup);$('signupTab').classList.toggle('active',signup);$('nameField').classList.toggle('hidden',!signup);$('authName').required=signup;$('authPassword').autocomplete=signup?'new-password':'current-password';$('authTitle').textContent=signup?'Create your account':'Welcome back';$('authDesc').textContent=signup?'Use the same email address you entered in the SamAr Client Onboarding Form.':'Sign in with the same email address you used in the SamAr Client Onboarding Form.';$('authSubmit').textContent=signup?'Create client account':'Log in to portal';$('authFootnote').textContent=signup?'Already have an account? Choose Log in.':'New here? Create an account using your onboarding email.'}
+function initSupabase(){if(!config.url||!config.key||config.url.includes('YOUR_SUPABASE')||config.key.includes('YOUR_SUPABASE'))return false;try{supabase=createClient(config.url,config.key);return true}catch(e){toast('Portal configuration needs attention. Please contact SamAr Digital.');return false}}
+$('loginTab').onclick=()=>setAuthMode('login');$('signupTab').onclick=()=>setAuthMode('signup');
+$('authForm').addEventListener('submit',async e=>{e.preventDefault();if(!initSupabase()){toast('SamAr Digital is finishing portal setup. Please try again later.');return}const email=$('authEmail').value.trim().toLowerCase(),password=$('authPassword').value,name=$('authName').value.trim();$('authSubmit').disabled=true;try{if(authMode==='signup'){const {data:res,error}=await supabase.auth.signUp({email,password,options:{data:{full_name:name}}});if(error)throw error;if(!res.session){toast('Account created. Check your email to confirm, then log in.');setAuthMode('login');return}currentUser=res.user;await openPortal()}else{const {data:res,error}=await supabase.auth.signInWithPassword({email,password});if(error)throw error;currentUser=res.user;await openPortal()}}catch(err){toast(err.message||'Could not sign in. Check your details.')}finally{$('authSubmit').disabled=false}});
+$('logoutBtn').onclick=async()=>{if(supabase)await supabase.auth.signOut();currentUser=null;$('portalApp').classList.add('hidden');$('authScreen').classList.remove('hidden');setAuthMode('login')};
+async function openPortal(){if(!currentUser)return;isAdmin=currentUser.app_metadata?.role==='admin';const adminNav=$('adminNav');if(adminNav)adminNav.classList.toggle('hidden',!isAdmin);$('authScreen').classList.add('hidden');$('portalApp').classList.remove('hidden');const email=currentUser.email||'';const name=currentUser.user_metadata?.full_name||email.split('@')[0]||'Client';$('greeting').textContent='Welcome, '+name.split(' ')[0]+'.';$('avatar').textContent=name.split(/\s+/).map(x=>x[0]).join('').slice(0,2).toUpperCase();$('connectionStatus').textContent='● Connected';await loadData();renderView('Overview')}
+async function fetchTable(table){const {data:rows,error}=await supabase.from(table).select('*').order('created_at',{ascending:false}).limit(100);if(error){if(error.code==='42P01'||error.message?.includes('schema cache'))throw new Error('Portal database is not ready yet. Please contact SamAr Digital.');throw error}return rows||[]}
+async function loadData(){try{const names=['onboarding_leads','projects','milestones','documents','invoices','project_updates','client_requests'];const results=await Promise.all(names.map(fetchTable));data={leads:results[0],projects:results[1],milestones:results[2],documents:results[3],invoices:results[4],updates:results[5],requests:results[6]};renderOverview()}catch(err){toast(err.message||'Could not load portal data.');data={leads:[],projects:[],milestones:[],documents:[],invoices:[],updates:[],requests:[]};renderOverview()}}
+function projectCard(p){return `<article class="project-card"><div class="project-head"><div><div class="project-name">${esc(p.project_name)}</div><div class="project-type">${esc(p.service_type||'SamAr Digital project')}</div></div><span class="badge ${/hold|pending|review/i.test(p.status||'')?'pending':''}">${esc(p.status||'In progress')}</span></div><div class="progress-line"><span style="width:${Math.max(0,Math.min(100,Number(p.progress)||0))}%"></span></div><div class="project-foot"><span><b>${Math.max(0,Math.min(100,Number(p.progress)||0))}%</b> complete</span><span>Target: <b>${date(p.target_date)}</b></span></div>${p.description?`<p class="empty-note">${esc(p.description)}</p>`:''}</article>`}
+function timelineHTML(items){if(!items.length)return '<div class="empty-state"><h3>No milestones added yet</h3><p>Once SamAr Digital adds your project milestones, you will see progress and next steps here.</p></div>';return `<div class="timeline">${items.map((m,i)=>`<div class="timeline-item"><div class="dot ${/complete|done/i.test(m.status||'')?'':'next'}">${/complete|done/i.test(m.status||'')?'✓':i+1}</div><div><div class="timeline-title">${esc(m.title)}</div><div class="timeline-meta">${esc(m.status||'Upcoming')}${m.due_date?' · Due '+date(m.due_date):''}${m.notes?' · '+esc(m.notes):''}</div></div></div>`).join('')}</div>`}
+function docsHTML(items){if(!items.length)return '<div class="empty-state"><h3>No documents yet</h3><p>Project proposals, deliverables and other shared files will appear here.</p></div>';return items.map(d=>`<div class="doc"><div class="doc-icon">${esc((d.file_type||'FILE').slice(0,4).toUpperCase())}</div><div class="doc-info"><div class="doc-title">${esc(d.title)}</div><div class="doc-meta">Shared ${date((d.created_at||'').slice(0,10))}</div></div><a href="${esc(d.file_url)}" target="_blank" rel="noopener noreferrer">Open ↗</a></div>`).join('')}
+function renderOverview(){const projects=data.projects;const active=projects.filter(p=>!/complete|delivered|cancelled/i.test(p.status||'')).length;const progress=projects.length?Math.round(projects.reduce((s,p)=>s+(Number(p.progress)||0),0)/projects.length):0;const approvals=data.milestones.filter(m=>/review|approval|awaiting/i.test(m.status||'')).length;const balance=data.invoices.filter(i=>!/paid/i.test(i.status||'')).reduce((s,i)=>s+Number(i.amount||0),0);$('metricProjects').textContent=String(active).padStart(2,'0');$('metricProgress').textContent=projects.length?progress+'%':'—';$('metricApprovals').textContent=String(approvals).padStart(2,'0');$('metricBalance').textContent=money(balance);$('projectPreview').innerHTML=projects.length?projects.slice(0,2).map(projectCard).join(''):'<div class="empty-state"><h3>Your project will appear here</h3><p>Use the same email as your onboarding form. Once SamAr Digital links your project to this email, progress and milestones will show here automatically.</p></div>';const ms=data.milestones.slice().sort((a,b)=>(a.sort_order||0)-(b.sort_order||0)).slice(0,5);$('timelinePreview').innerHTML=timelineHTML(ms);$('documentPreview').innerHTML=docsHTML(data.documents.slice(0,3));const latest=data.updates[0];$('latestUpdate').innerHTML=latest?`<div class="update-box"><div class="date">${date((latest.created_at||'').slice(0,10))}</div><strong>${esc(latest.title)}</strong><p>${esc(latest.message||'')}</p></div>`:'<div class="empty-state"><h3>No updates posted yet</h3><p>Project announcements and progress notes from SamAr Digital will appear here.</p></div>';const lead=data.leads[0];$('onboardingStatus').innerHTML=lead?`<div class="status-line"><span>Onboarding request</span><strong>${esc(lead.lead_status||'Received')}</strong></div><p class="empty-note">Service: ${esc(lead.service_requested||'Not specified')}<br>Received: ${date((lead.submitted_at||lead.created_at||'').slice(0,10))}</p>`:'<div class="empty-state"><h3>No onboarding record linked</h3><p>We could not find an onboarding response for this email yet. Please sign up with the same email you used in the Google Form.</p></div>'}
+function renderView(view){if(view==='Admin'&&!isAdmin){toast('Admin access required.');return}$('crumbCurrent').textContent=view;document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));$('viewOverview').classList.toggle('hidden',view!=='Overview');$('viewOther').classList.toggle('hidden',view==='Overview');$('sidebar').classList.remove('open');if(view==='Overview')return;let html='';if(view==='Admin'){html=adminHTML()}else if(view==='My Projects')html=`<section class="panel"><div class="panel-head"><div><h2>My projects</h2><div class="panel-sub">Project status and progress</div></div></div>${data.projects.length?data.projects.map(projectCard).join(''):'<div class="empty-state"><h3>No projects linked yet</h3><p>Your projects will appear here once SamAr Digital links them to your onboarding email.</p></div>'}</section>`;else if(view==='Timeline')html=`<section class="panel"><div class="panel-head"><div><h2>Project timeline</h2><div class="panel-sub">Milestones and delivery steps</div></div></div>${timelineHTML(data.milestones.slice().sort((a,b)=>(a.sort_order||0)-(b.sort_order||0)))}</section>`;else if(view==='Documents')html=`<section class="panel"><div class="panel-head"><div><h2>Documents</h2><div class="panel-sub">Proposal, deliverables and files shared with you</div></div></div><div class="doc-list">${docsHTML(data.documents)}</div></section>`;else if(view==='Invoices & Payments')html=`<section class="panel"><div class="panel-head"><div><h2>Invoices & payments</h2><div class="panel-sub">Your invoice status in one place</div></div></div>${data.invoices.length?data.invoices.map(i=>`<div class="status-line"><div><strong>${esc(i.invoice_number||i.description||'Invoice')}</strong><div class="muted small">${i.due_date?'Due '+date(i.due_date):'No due date'}</div>${i.invoice_url?`<a href="${esc(i.invoice_url)}" target="_blank" rel="noopener noreferrer">Open invoice ↗</a>`:''}</div><div style="text-align:right"><strong>${money(i.amount)}</strong><div class="badge ${/paid/i.test(i.status||'')?'':'pending'}">${esc(i.status||'Pending')}</div></div></div>`).join(''):'<div class="empty-state"><h3>No invoices available</h3><p>Invoices and payment status will appear here when shared by SamAr Digital.</p></div>'}</section>`;else html=`<section class="panel"><div class="panel-head"><div><h2>Feedback & revisions</h2><div class="panel-sub">Send a request directly from your portal</div></div></div><form id="requestForm" class="request-form"><div class="field"><label for="requestType">What do you need?</label><select id="requestType"><option>Project update</option><option>Feedback</option><option>Revision request</option><option>Question</option><option>Other</option></select></div><div class="field"><label for="requestMessage">Message</label><textarea id="requestMessage" placeholder="Tell us what you need help with..." required minlength="3"></textarea></div><button class="primary" type="submit">Send request</button></form><h2 style="margin:24px 0 12px">Your previous requests</h2>${data.requests.length?data.requests.map(r=>`<div class="status-line"><div><strong>${esc(r.request_type)}</strong><div class="muted small">${esc(r.message)}</div><div class="muted small">${date((r.created_at||'').slice(0,10))}</div></div><span class="badge ${/received|pending/i.test(r.status||'')?'pending':''}">${esc(r.status||'Received')}</span></div>`).join(''):'<p class="empty-note">You have not sent any requests yet.</p>'}</section>`;
+$('viewOther').innerHTML=html;const form=$('requestForm');if(form)form.addEventListener('submit',sendRequest);const ap=$('adminProjectForm');if(ap)ap.addEventListener('submit',saveAdminProject);const ar=$('adminRefresh');if(ar)ar.addEventListener('click',async()=>{await loadData();renderView('Admin')});document.querySelectorAll('[data-lead-status]').forEach(sel=>sel.addEventListener('change',()=>updateLeadStatus(sel.dataset.leadStatus,sel.value)))}
+function adminHTML(){return `<section class="panel"><div class="panel-head"><div><h2>Admin workspace</h2><div class="panel-sub">Manage onboarding leads and create client projects.</div></div><button class="secondary" id="adminRefresh" type="button">Refresh</button></div><h3>Onboarding leads</h3>${data.leads.length?data.leads.map(l=>`<div class="status-line"><div><strong>${esc(l.client_name||l.client_email)}</strong><div class="muted small">${esc(l.client_email)} · ${esc(l.service_requested||'Service not specified')}</div><div class="muted small">${date((l.submitted_at||l.created_at||'').slice(0,10))}</div></div><div><select data-lead-status="${esc(l.id)}"><option ${l.lead_status==='Received'?'selected':''}>Received</option><option ${l.lead_status==='Contacted'?'selected':''}>Contacted</option><option ${l.lead_status==='Accepted'?'selected':''}>Accepted</option><option ${l.lead_status==='Rejected'?'selected':''}>Rejected</option></select></div></div>`).join(''):'<p class="empty-note">No onboarding leads found. Google Form responses must be synced to onboarding_leads.</p>'}</section><section class="panel"><h2>Create project for an accepted client</h2><p class="panel-sub">Use the exact email from the onboarding form and client account.</p><form id="adminProjectForm" class="request-form"><div class="field"><label>Client email</label><input id="adminEmail" type="email" required placeholder="client@example.com"></div><div class="field"><label>Project name</label><input id="adminProjectName" required placeholder="Website redesign"></div><div class="row"><div class="field"><label>Service type</label><input id="adminService" placeholder="Website / Automation"></div><div class="field"><label>Target delivery date</label><input id="adminTarget" type="date"></div></div><div class="field"><label>Project description</label><textarea id="adminDescription" placeholder="Scope and next steps"></textarea></div><button class="primary" type="submit">Create project</button></form></section><section class="panel"><h2>Current projects</h2>${data.projects.length?data.projects.map(p=>`<div class="status-line"><div><strong>${esc(p.project_name)}</strong><div class="muted small">${esc(p.client_email)} · ${esc(p.status||'In progress')}</div><div class="muted small">Progress: ${Number(p.progress)||0}%</div></div></div>`).join(''):'<p class="empty-note">No projects created yet.</p>'}</section>`}
+async function saveAdminProject(e){e.preventDefault();if(!isAdmin)return;const btn=e.submitter;btn.disabled=true;try{const payload={client_email:$('adminEmail').value.trim().toLowerCase(),project_name:$('adminProjectName').value.trim(),service_type:$('adminService').value.trim()||null,target_date:$('adminTarget').value||null,description:$('adminDescription').value.trim()||null,status:'In progress',progress:0};const {error}=await supabase.from('projects').insert(payload);if(error)throw error;toast('Project created.');await loadData();renderView('Admin')}catch(err){toast(err.message||'Could not create project.')}finally{btn.disabled=false}}
+async function updateLeadStatus(id,status){if(!isAdmin)return;try{const {error}=await supabase.from('onboarding_leads').update({lead_status:status}).eq('id',id);if(error)throw error;toast('Lead status updated.');await loadData();renderView('Admin')}catch(err){toast(err.message||'Could not update lead.')}}
+async function sendRequest(e){e.preventDefault();const message=$('requestMessage').value.trim();if(!message)return;const button=e.submitter;button.disabled=true;try{const payload={client_email:currentUser.email,client_name:currentUser.user_metadata?.full_name||'',request_type:$('requestType').value,message};const {error}=await supabase.from('client_requests').insert(payload);if(error)throw error;toast('Request sent to SamAr Digital.');await loadData();renderView('Feedback & Revisions')}catch(err){toast(err.message||'Could not send request.')}finally{if(button)button.disabled=false}}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>renderView(b.dataset.view)));document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>renderView(b.dataset.jump)));$('menuBtn').onclick=()=>$('sidebar').classList.toggle('open');$('updateBtn').onclick=()=>renderView('Feedback & Revisions');$('sidebarRequest').onclick=()=>renderView('Feedback & Revisions');
+const storedConfigReady=initSupabase();if(storedConfigReady){supabase.auth.getSession().then(({data:res})=>{if(res.session){currentUser=res.session.user;openPortal()}});supabase.auth.onAuthStateChange((event,session)=>{if(session&&event==='SIGNED_IN'){currentUser=session.user;openPortal()}})}else{console.info('SamAr Client Portal awaits owner configuration in the source constants.');}
+</script>
+</body>
+</html>
